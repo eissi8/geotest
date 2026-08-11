@@ -1,0 +1,10 @@
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.copilot-tracking/
+.vscode/
+dist/
+storage-state.json
+test-results/

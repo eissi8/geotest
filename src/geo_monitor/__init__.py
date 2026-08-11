@@ -1,0 +1,1 @@
+"""ChatGPT GEO visibility monitor."""

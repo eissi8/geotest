@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "geo-chatgpt-monitor"
+version = "0.1.0"
+description = "Hourly Playwright monitor for ChatGPT web visibility experiments"
+requires-python = ">=3.12"
+dependencies = [
+  "azure-communication-email>=1.0,<2",
+  "azure-identity>=1.17,<2",
+  "playwright==1.62.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4,<9",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+geo-monitor = "geo_monitor.main:main"
+geo-capture-session = "geo_monitor.capture_session:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geo_monitor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
