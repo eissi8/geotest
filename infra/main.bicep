@@ -124,11 +124,10 @@ resource job 'Microsoft.App/jobs@2024-03-01' = if (deployJob) {
   properties: {
     environmentId: environment.id
     configuration: {
-      triggerType: 'Schedule'
-      replicaTimeout: 900
-      replicaRetryLimit: 1
-      scheduleTriggerConfig: {
-        cronExpression: '0 * * * *'
+      triggerType: 'Manual'
+      replicaTimeout: 180
+      replicaRetryLimit: 0
+      manualTriggerConfig: {
         parallelism: 1
         replicaCompletionCount: 1
       }
@@ -145,8 +144,8 @@ resource job 'Microsoft.App/jobs@2024-03-01' = if (deployJob) {
           name: 'geo-monitor'
           image: image
           resources: {
-            cpu: json('0.5')
-            memory: '1Gi'
+            cpu: json('1.0')
+            memory: '2Gi'
           }
           env: [
             {
@@ -164,6 +163,10 @@ resource job 'Microsoft.App/jobs@2024-03-01' = if (deployJob) {
             {
               name: 'AZURE_CLIENT_ID'
               value: identity.properties.clientId
+            }
+            {
+              name: 'CHATGPT_TIMEOUT_SECONDS'
+              value: '45'
             }
           ]
         }

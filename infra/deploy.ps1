@@ -45,4 +45,4 @@ $deployment = az deployment group create `
 Write-Host "Job: $($deployment.jobName.value)"
 Write-Host "Image: $($deployment.imageName.value)"
 Write-Host "Sender: $($deployment.emailSender.value)"
-Write-Host 'Schedule: hourly at minute 0 (UTC)'
+Write-Host 'Container Apps Job trigger: manual diagnostics only'

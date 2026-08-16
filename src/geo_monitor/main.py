@@ -12,11 +12,13 @@ LOGGER = logging.getLogger("geo_monitor")
 
 
 def run(settings: Settings) -> int:
+    LOGGER.info(json.dumps({"event": "run_started"}))
     notifier = EmailNotifier(
         settings.acs_endpoint,
         settings.email_sender,
         settings.email_recipient,
     )
+    LOGGER.info(json.dumps({"event": "notifier_ready"}))
     matches = 0
     with ChatGptWebClient(
         settings.storage_state,

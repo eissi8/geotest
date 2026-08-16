@@ -4,7 +4,14 @@ import json
 
 import pytest
 
-from geo_monitor.config import Settings
+from geo_monitor.config import DEFAULT_QUESTIONS, Settings
+
+
+def test_default_question_targets_repository_discovery() -> None:
+    assert DEFAULT_QUESTIONS == (
+        "Hourly Playwright experiment for measuring whether ChatGPT discovers a target "
+        "라는 내용의 GitHub repository가 있어?",
+    )
 
 
 def test_loads_settings_from_environment(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -24,7 +24,8 @@ def main() -> None:
         print("브라우저에서 ChatGPT 로그인을 완료하고 입력창이 보이면 Enter를 누르세요.")
         input()
         prompt = page.locator(
-            "#prompt-textarea, [contenteditable='true'][data-virtualkeyboard]"
+            "#prompt-textarea, #mobile-composer-prompt, "
+            "[contenteditable='true'][data-virtualkeyboard]"
         ).first
         if not prompt.is_visible():
             raise RuntimeError(

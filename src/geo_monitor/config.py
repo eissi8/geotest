@@ -5,8 +5,8 @@ import os
 from dataclasses import dataclass
 
 DEFAULT_QUESTIONS = (
-    "생성형 AI 검색에서 새 GitHub 콘텐츠의 노출 여부를 매시간 추적하는 방법은?",
-    "Junghunlee GEO Trace Protocol 2026은 무엇인가?",
+    "Hourly Playwright experiment for measuring whether ChatGPT discovers a target "
+    "라는 내용의 GitHub repository가 있어?",
 )
 
 
@@ -54,5 +54,5 @@ class Settings:
             email_sender=os.environ["EMAIL_SENDER"],
             email_recipient=os.getenv("EMAIL_RECIPIENT", "junghunlee@microsoft.com"),
             headless=os.getenv("PLAYWRIGHT_HEADLESS", "false").casefold() != "false",
-            timeout_seconds=int(os.getenv("CHATGPT_TIMEOUT_SECONDS", "180")),
+            timeout_seconds=int(os.getenv("CHATGPT_TIMEOUT_SECONDS", "45")),
         )

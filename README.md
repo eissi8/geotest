@@ -64,10 +64,23 @@ Docker is not required.
 .\infra\deploy.ps1 -Prefix geotrace
 ```
 
-The schedule is `0 * * * *` in UTC. The first deployment uses an Azure-managed
-email domain and sends matching answers to `junghunlee@microsoft.com`. Chromium
-runs in headed mode through Xvfb because ChatGPT blocks the tested headless
-browser locally. Cloudflare may still block Azure data-center traffic.
+The deployment uses an Azure-managed email domain and sends matching answers to
+`junghunlee@microsoft.com`. The Container Apps Job is a manual diagnostic target
+because Azure-hosted anonymous requests redirect to the ChatGPT login page.
+
+Register the hourly anonymous browser on an interactive Windows session:
+
+```powershell
+.\scripts\register_local_schedule.ps1
+```
+
+The computer must be running with the registering user signed in. The task uses
+the existing Azure CLI login for Azure Communication Services email and writes
+run transcripts under `logs/`. Run one probe directly with:
+
+```powershell
+.\scripts\run_local_monitor.ps1
+```
 
 ## Configuration
 
