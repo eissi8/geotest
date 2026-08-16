@@ -41,6 +41,8 @@ def run(settings: Settings) -> int:
                     {
                         "event": "probe_completed",
                         "question": question,
+                        "answer": answer.text,
+                        "answer_links": answer.links,
                         "matched": result.matched,
                         **asdict(result),
                     },
